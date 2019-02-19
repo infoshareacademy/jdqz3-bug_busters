@@ -24,7 +24,7 @@ public class ItemGenerator extends RandomGenerator {
         List<Bag> handbagsList = Arrays.asList(vintageCourier, chicVintage, vintageExotik, multiUseHandBag, vintageBag, vintageChic, vintageBeachBag, retroStyleBag,
                 vintageLaptopBag,vintageBagWithLeatherBands);
 
-        Bag randomBag = handbagsList.get(generateRandomNumber(0, handbagsList.size()));
+        Bag randomBag = handbagsList.get(generateRandomNumber(0, handbagsList.size() -1));
         return randomBag;
     }
 }
