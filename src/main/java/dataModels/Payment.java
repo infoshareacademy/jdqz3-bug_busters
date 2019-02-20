@@ -1,0 +1,37 @@
+package dataModels;
+
+public class Payment {
+
+    private String name;
+    private String streetAddress;
+    private String city;
+    private String country;
+    private String stateProvince;
+    private String postalCode;
+
+
+    public Payment(String name, String streetAddress, String city, String stateProvince, String country,String postalCode) {
+        this.name = name;
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.country = country;
+        this.stateProvince = stateProvince;
+        this.postalCode = postalCode;
+    }
+
+    public Payment() {
+        this("Vintage Bags", "350 Du Languedoc", "Bourcherville", "QC", "Canada", "J4B 0A4");
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "name='" + name + '\'' +
+                ", streetAddress='" + streetAddress + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", stateProvince='" + stateProvince + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                '}';
+    }
+}
