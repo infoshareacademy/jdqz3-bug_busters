@@ -22,4 +22,6 @@ public class CredentialsGenerator extends RandomGenerator{
     }
 
     public static Integer generatePhone() { return generateRandomNumber(000000000, 999999999); }
+
+    public  static String generateComapnyName() { return capitalize(genrateRandomString(15));}
 }

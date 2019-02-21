@@ -1,6 +1,6 @@
 package dataModels;
 
-import generators.AddressGenerator;
+
 import generators.CredentialsGenerator;
 
 public class UserBase {
@@ -11,6 +11,7 @@ public class UserBase {
     private Address shippingAddress;
     private String email;
     private Integer phone;
+    private String companyName;
     protected boolean isRegistred;
 
 
@@ -21,6 +22,7 @@ public class UserBase {
         this.shippingAddress = this.address;
         this.email = CredentialsGenerator.generateEmail();
         this.phone = CredentialsGenerator.generatePhone();
+        this.companyName = CredentialsGenerator.generateComapnyName();
 
     }
 
@@ -67,4 +69,12 @@ public class UserBase {
     public Integer getPhone() { return phone; }
 
     public void setPhone(Integer phone) { this.phone = phone; }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 }
