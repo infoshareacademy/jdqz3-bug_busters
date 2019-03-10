@@ -2,9 +2,8 @@ package generators;
 
 public class AddressGenerator extends RandomGenerator{
 
-    private static String[] cities = { "Belgium", "Brazil", "Canada", "China",
-            "Czech Republic", "France", "India",
-            "Italy", "Switzerland", "United States" };
+    private static String[] cities = { "Belgium", "Brazil", "Czech Republic", "France", "India",
+            "Italy" };
 
     public static String generateCity(){
         return capitalize(genrateRandomString(7));
