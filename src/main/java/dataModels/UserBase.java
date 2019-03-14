@@ -10,7 +10,7 @@ public class UserBase {
     private Address address;
     private Address shippingAddress;
     private String email;
-    private Integer phone;
+    private String phone;
     private String companyName;
     protected boolean isRegistred;
 
@@ -21,7 +21,7 @@ public class UserBase {
         this.address = new Address(false);
         this.shippingAddress = this.address;
         this.email = CredentialsGenerator.generateEmail();
-        this.phone = CredentialsGenerator.generatePhone();
+        this.phone = CredentialsGenerator.generatePhone().toString();
         this.companyName = CredentialsGenerator.generateComapnyName();
 
     }
@@ -66,9 +66,9 @@ public class UserBase {
         this.shippingAddress = shippingAddress;
     }
 
-    public Integer getPhone() { return phone; }
+    public String getPhone() { return phone; }
 
-    public void setPhone(Integer phone) { this.phone = phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
     public String getCompanyName() {
         return companyName;
