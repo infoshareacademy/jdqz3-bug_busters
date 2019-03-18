@@ -6,16 +6,16 @@ public class AddressGenerator extends RandomGenerator{
             "Italy" };
 
     public static String generateCity(){
-        return capitalize(genrateRandomString(7));
+        return capitalize(generateRandomString(7));
     }
 
     public static String generateState(){
-        return capitalize(genrateRandomString(9));
+        return capitalize(generateRandomString(9));
     }
 
     public static String generateStreetAddress(){
         int number = generateRandomNumber(4, 250);
-        String street = capitalize(genrateRandomString(12));
+        String street = capitalize(generateRandomString(12));
         return number + " " + street;
     }
 

@@ -7,14 +7,14 @@ public class Order {
     private double totalPrice;
     private Bag bag;
     private Address address;
-    private RegisteredUser registeredUser;
+    private User user;
     private UserBase notRegisterUser;
 
 
-    public Order(Bag bag, Address address, RegisteredUser registeredUser) {
+    public Order(Bag bag, Address address, User user) {
         this.bag = bag;
         this.address = address;
-        this.registeredUser = registeredUser;
+        this.user = user;
     }
 
     public Order(Bag bag, Address address, UserBase notRegisterUser) {
@@ -47,8 +47,8 @@ public class Order {
         return address;
     }
 
-    public RegisteredUser getRegisteredUser() {
-        return registeredUser;
+    public User getUser() {
+        return user;
     }
 
     public void setOrderNumber(String orderNumber) {

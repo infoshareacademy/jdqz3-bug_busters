@@ -1,6 +1,6 @@
 package pages;
 
-import dataModels.RegisteredUser;
+import dataModels.User;
 import elements.Button;
 import elements.Select;
 import elements.TextInput;
@@ -44,28 +44,28 @@ public class CheckoutPage extends BasePage {
         this.phone = new TextInput(this.driver, phoneSelector);
     }
 
-    private void fillInAvailableAddressData (RegisteredUser registeredUser){
-        firstName.type(registeredUser.getFirstname());
-        lastName.type(registeredUser.getLastname());
-        billingCompany.type(registeredUser.getCompanyName());
-        streetAddress.type(registeredUser.getAddress().getStreetAddress());
-        city.type(registeredUser.getAddress().getCity());
-        country.selectByText(registeredUser.getAddress().getCountry());
-        email.type(registeredUser.getEmail());
-        phone.type(registeredUser.getPhone());
+    private void fillInAvailableAddressData (User user){
+        firstName.type(user.getFirstname());
+        lastName.type(user.getLastname());
+        billingCompany.type(user.getCompanyName());
+        streetAddress.type(user.getAddress().getStreetAddress());
+        city.type(user.getAddress().getCity());
+        country.selectByText(user.getAddress().getCountry());
+        email.type(user.getEmail());
+        phone.type(user.getPhone());
     }
 
-    private void fillInAddressDataAfterReload (RegisteredUser registeredUser){
+    private void fillInAddressDataAfterReload (User user){
 
         state = new TextInput(driver, stateSelector);
         postalCode = new TextInput(driver, postalCodeSelector);
-        state.type(registeredUser.getAddress().getState());
-        postalCode.type(registeredUser.getAddress().getPostalCode());
+        state.type(user.getAddress().getState());
+        postalCode.type(user.getAddress().getPostalCode());
     }
 
-    public void fillInCompleteAddress(RegisteredUser registeredUser){
-        fillInAvailableAddressData(registeredUser);
-        fillInAddressDataAfterReload(registeredUser);
+    public void fillInCompleteAddress(User user){
+        fillInAvailableAddressData(user);
+        fillInAddressDataAfterReload(user);
     }
 
     public void chooseSubmitOrder(){

@@ -1,8 +1,7 @@
 package tests;
 
-import categories.CartTest;
 import categories.PurchaseTests;
-import dataModels.RegisteredUser;
+import dataModels.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,13 +15,13 @@ public class TestApp {
 
     private WebDriver driver;
     private MainPage mainPage;
-    private RegisteredUser registeredUser;
+    private User user;
 
     @Before
     public void startBrowser(){
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
-        this.registeredUser = new RegisteredUser(true);
+        this.user = new User(true);
     }
 
     @After
@@ -42,7 +41,7 @@ public class TestApp {
         reviewOrderPage.chooseProceedCheckout();
 
         CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.fillInCompleteAddress(registeredUser);
+        checkoutPage.fillInCompleteAddress(user);
         checkoutPage.chooseSubmitOrder();
 
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
