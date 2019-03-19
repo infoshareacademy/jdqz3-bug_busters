@@ -11,7 +11,7 @@ public class MainPage extends BasePage {
     private Button myAccountMenu;
     private By registerSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Register']");
     private Button register;
-    private By signInSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Register']");
+    private By signInSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Sign in']");
     private Button signIn;
 
     public MainPage(WebDriver driver){
