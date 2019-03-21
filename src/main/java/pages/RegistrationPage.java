@@ -7,7 +7,7 @@ import elements.TextInput;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class RegistrationPage extends MainPage {
+public class RegistrationPage extends BasePage {
 
     private By firstNameSelector = By.id("firstName");
     private TextInput firstName;
