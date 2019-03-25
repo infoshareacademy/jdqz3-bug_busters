@@ -2,11 +2,11 @@ package dataModels;
 
 import generators.CredentialsGenerator;
 
-public class RegisteredUser extends UserBase{
+public class User extends UserBase{
 
     private String password;
 
-    public RegisteredUser(){
+    public User(){
         this.isRegistred = true;
         this.password = CredentialsGenerator.generatePassword();
         Address add = new Address(true);
@@ -14,15 +14,18 @@ public class RegisteredUser extends UserBase{
         this.setShippingAddress(add);
     }
 
-    public RegisteredUser(boolean withAlternativeShippingAddress){
+    public User(boolean withAlternativeShippingAddress){
         if (withAlternativeShippingAddress){
             this.isRegistred = true;
             this.password = CredentialsGenerator.generatePassword();
             this.setAddress(new Address(true));
             this.setShippingAddress(new Address(true));
         } else {
-            new RegisteredUser();
+            new User();
         }
     }
 
+    public String getPassword() {
+        return password;
+    }
 }
