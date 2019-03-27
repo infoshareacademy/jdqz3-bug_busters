@@ -1,6 +1,6 @@
 package pages;
 
-import dataModels.RegisteredUser;
+import dataModels.User;
 import elements.Button;
 import elements.Label;
 import elements.Select;
@@ -26,7 +26,7 @@ public class AccountAddressPage extends BasePage {
     private Select countrySelect;
     private By countrySelector = By.id("#customer_country");
     private TextInput stateProvinceInput;
-    private By stateprovinceSelector = By.id("");
+    private By stateprovinceSelector = By.id("#hidden_zones");
     private TextInput postalcodeInput;
     private By postalCodeSelector = By.id("#billingPostalCode");
     private TextInput phoneNumberInput;
@@ -52,15 +52,15 @@ public class AccountAddressPage extends BasePage {
         this.phoneNumberInput = new TextInput(this.driver, phoneNumberSelector);
     }
 
-    private void fillInAddress(RegisteredUser registeredUser) {
-        firstNameInput.type(registeredUser.getFirstname());
-        lastNameInput.type(registeredUser.getLastname());
-        companyNameInput.type(registeredUser.getCompanyName());
-        streetAddressInput.type(registeredUser.getAddress().getStreetAddress());
-        cityInput.type(registeredUser.getAddress().getCity());
-        countrySelect.selectByText(registeredUser.getAddress().getCountry());
-        postalcodeInput.type(registeredUser.getAddress().getPostalCode());
-        phoneNumberInput.type(registeredUser.getPhone());
+    private void fillInAddress(User user) {
+        firstNameInput.type(user.getFirstname());
+        lastNameInput.type(user.getLastname());
+        companyNameInput.type(user.getCompanyName());
+        streetAddressInput.type(user.getAddress().getStreetAddress());
+        cityInput.type(user.getAddress().getCity());
+        countrySelect.selectByText(user.getAddress().getCountry());
+        postalcodeInput.type(user.getAddress().getPostalCode());
+        phoneNumberInput.type(user.getPhone());
     }
 
     public void clickEditBillingAddressButton() {
