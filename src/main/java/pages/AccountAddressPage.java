@@ -14,26 +14,26 @@ public class AccountAddressPage extends BasePage {
     private By editBillingAddressSelector = By.xpath("//p[contains(text(),'Billing Address')]");
 
     private TextInput firstNameInput;
-    private By firstNameSelector = By.id("#firstName");
+    private By firstNameSelector = By.id("firstName");
     private TextInput lastNameInput;
-    private By lastNameSelector = By.id("#lastName");
+    private By lastNameSelector = By.id("lastName");
     private TextInput companyNameInput;
-    private By companyNameSelector = By.id("#company");
+    private By companyNameSelector = By.id("company");
     private TextInput streetAddressInput;
-    private By streetAddressSelector = By.id("#address");
+    private By streetAddressSelector = By.id("address");
     private TextInput cityInput;
-    private By citySelector = By.id("#city");
+    private By citySelector = By.id("city");
     private Select countrySelect;
-    private By countrySelector = By.id("#customer_country");
+    private By countrySelector = By.id("customer_country");
     private TextInput stateProvinceInput;
-    private By stateprovinceSelector = By.id("#hidden_zones");
+    private By stateprovinceSelector = By.id("hidden_zones");
     private TextInput postalcodeInput;
-    private By postalCodeSelector = By.id("#billingPostalCode");
+    private By postalCodeSelector = By.id("billingPostalCode");
     private TextInput phoneNumberInput;
-    private By phoneNumberSelector = By.id("#phone");
+    private By phoneNumberSelector = By.id("phone");
 
     private Button changeAddressButton;
-    private By changeAddressSelector = By.id("#submitAddress");
+    private By changeAddressSelector = By.id("submitAddress");
 
     private Label requestInformation;
     private By requestInformationSelector = By.xpath("//div[@class='alert alert-success']");
