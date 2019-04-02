@@ -26,5 +26,9 @@ public class BasePage {
         wait.until((ExpectedCondition<Boolean>) driver -> (runner.executeScript("return document.readyState").equals("complete")));
     }
 
+    public MenuPage getMainMenu() {
+        return new MenuPage(driver);
+    }
+
     public void close() {this.driver.quit();}
 }

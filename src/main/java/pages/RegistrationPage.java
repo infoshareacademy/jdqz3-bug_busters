@@ -38,7 +38,7 @@ public class RegistrationPage extends BasePage {
 
     }
 
-    public void fillInRegistrationData(User user){
+    public RegistrationPage fillInRegistrationData(User user){
         this.firstName.type(user.getFirstname());
         this.lastName.type(user.getLastname());
         this.country.selectByText(user.getAddress().getCountry());
@@ -46,13 +46,14 @@ public class RegistrationPage extends BasePage {
         this.email.type(user.getEmail());
         this.password.type(user.getPassword());
         this.repeatPassword.type(user.getPassword());
+
+        return this;
     }
 
     public void createAnAccount(){
         this.createAnAccountBtn = new Button(this.driver, createAnAccountSelector);
         this.createAnAccountBtn.click();
+//        return this;
     }
-
-
 
 }

@@ -5,24 +5,21 @@ import generators.CredentialsGenerator;
 public class User extends UserBase{
 
     private String password;
+    private String incorrectPassword;
 
-    public User(){
-        this.isRegistred = true;
-        this.password = CredentialsGenerator.generatePassword();
-        Address add = new Address(true);
-        this.setAddress(add);
-        this.setShippingAddress(add);
-    }
 
     public User(boolean withAlternativeShippingAddress){
+        this.isRegistred = true;
+        this.password = CredentialsGenerator.generatePassword();
+        this.incorrectPassword = CredentialsGenerator.generatePassword();
+        this.setAddress(new Address(true));
         if (withAlternativeShippingAddress){
-            this.isRegistred = true;
-            this.password = CredentialsGenerator.generatePassword();
-            this.setAddress(new Address(true));
             this.setShippingAddress(new Address(true));
-        } else {
-            new User();
         }
+    }
+
+    public String getIncorrectPassword() {
+        return incorrectPassword;
     }
 
     public String getPassword() {
