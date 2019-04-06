@@ -23,12 +23,9 @@ public class LoginTests {
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
         this.user = new User(false);
-//        MenuPage menuPage = new MenuPage(driver);
         Preconditions preconditions = new Preconditions(driver);
         preconditions.registration(user);
         preconditions.logout();
-
-
     }
 
     @After
@@ -36,11 +33,18 @@ public class LoginTests {
         mainPage.close();
     }
 
-//    @Test
-//    public void logout(){
-//        MenuPage menuPage = new MenuPage(driver);
-//        menuPage.chooseLogout();
-//    }
+
+    @Test
+    public void logout(){
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.chooseSignIn()
+                .fillInLoginData(user)
+                .chooseSignInButton();
+        menuPage.chooseLogout();
+
+        Assert.assertTrue("Logout process has failed", menuPage.isUserLoggedOut());
+    }
+
 
     @Test
     public void loginPositiveScenario(){
@@ -50,10 +54,9 @@ public class LoginTests {
                 .fillInLoginData(user)
                 .chooseSignInButton();
 
-
         Assert.assertTrue("Login process has failed", menuPage.isUserLoggedIn(user) );
-
     }
+
 
     @Test
     public void loginWithoutData(){
@@ -66,6 +69,7 @@ public class LoginTests {
         SignInPage signInPage = new SignInPage(driver);
         Assert.assertTrue("There is no proper message", signInPage.isLoginFailed());
     }
+
 
     @Test
     public void loginWithIncorrectPassword(){

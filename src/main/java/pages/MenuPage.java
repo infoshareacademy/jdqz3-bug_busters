@@ -15,6 +15,7 @@ public class MenuPage extends BasePage {
     private Button logoutBtn;
     private By myAccountSelector = By.cssSelector("div#customerAccount li[class='click_menu']");
     private Button myAccountMenu;
+    private Label myAccountLabel;
     private By registerSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Register']");
     private Button register;
     private By signInSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Sign in']");
@@ -58,6 +59,11 @@ public class MenuPage extends BasePage {
         return welcomeUserLabel.read();
     }
 
+    public String getTextFromAccountMenu() {
+        this.myAccountLabel = new Label(this.driver, this.myAccountSelector);
+        return myAccountLabel.read();
+    }
+
 
     public MainPage chooseLogout() {
 
@@ -73,5 +79,7 @@ public class MenuPage extends BasePage {
     public boolean isUserLoggedIn(User user) {
         return getTextFromWelcomeMenu().contains(user.getFirstname());
     }
+
+    public boolean isUserLoggedOut() { return getTextFromAccountMenu().contains("My Account"); }
 
 }
