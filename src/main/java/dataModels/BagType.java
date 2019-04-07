@@ -5,4 +5,4 @@ public enum BagType {
     BEACH_BAGS,
     LAPTOP_BAGS,
     BAGS
-};
+}
