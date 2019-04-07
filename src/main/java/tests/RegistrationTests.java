@@ -32,17 +32,12 @@ public class RegistrationTests {
     public void registrationPositiveScenario(){
         MenuPage menuPage = new MenuPage(driver);
 
-//        boolean isUserRegistered =
                 menuPage
                 .chooseRegister()
                 .fillInRegistrationData(user)
                 .createAnAccount();
-//                .getMainMenu();
-//                .isUserLoggedIn(user);
-
 
         Assert.assertTrue("Registration process has failed", menuPage.isUserLoggedIn(user));
-        // opcjonalnie zamiast menuPage.isUserLoggedIn(user) można podać isUserRegistered
 
     }
 }

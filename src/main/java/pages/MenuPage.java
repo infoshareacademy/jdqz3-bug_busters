@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class MenuPage extends BasePage {
 
-    private By welcomeUserSelector = By.id("customerAccount");
+    private By welcomeUserSelector = By.xpath("//div[@id='customerAccount'] //a[contains(text(),'Welcome')]");
     private Button welcomeUserBtn;
     private Label welcomeUserLabel;
     private By logoutSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Logout']");
@@ -27,7 +27,7 @@ public class MenuPage extends BasePage {
 
 
     public boolean isLoggedIn() {
-        return driver.findElements(welcomeUserSelector).size() != 1;
+        return driver.findElements(welcomeUserSelector).size() > 0;
     }
 
     public SignInPage chooseSignIn() {
@@ -73,7 +73,6 @@ public class MenuPage extends BasePage {
             this.logoutBtn.click();
             return new MainPage(driver);
 
-//        throw new IllegalStateException("You are not logged in, Logout option is not available");
     }
 
     public boolean isUserLoggedIn(User user) {
