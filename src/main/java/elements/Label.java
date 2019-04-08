@@ -12,13 +12,23 @@ public class Label {
     private WebDriver driver;
 
 
-    public Label(WebDriver driver, By by){
+    public Label(WebDriver driver, By by) {
         this.driver = driver;
         WebDriverWait wait = new WebDriverWait(this.driver, timeout);
         element = wait.until(ExpectedConditions.visibilityOfElementLocated((by)));
     }
 
-    public String read(){
+    public String read() {
         return this.element.getText();
+    }
+
+    public String getValue() {
+        return this.element.getAttribute("value");
+    }
+
+    public Label inputValue() {
+        this.element.clear();
+        this.element.sendKeys("2");
+        return this;
     }
 }

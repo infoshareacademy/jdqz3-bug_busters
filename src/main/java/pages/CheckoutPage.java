@@ -2,6 +2,7 @@ package pages;
 
 import dataModels.User;
 import elements.Button;
+import elements.Label;
 import elements.Select;
 import elements.TextInput;
 import org.openqa.selenium.By;
@@ -32,7 +33,10 @@ public class CheckoutPage extends BasePage {
     private Button submitOrder;
     private By submitOrderSelector = By.cssSelector("button#submitOrder");
 
-    public CheckoutPage(WebDriver driver){
+    private Label moneyOrderAddress;
+    private By moneyOrderAddressSelector = By.xpath("//p[contains(text(),'Send your payment to')]");
+
+    public CheckoutPage(WebDriver driver) {
         super(driver);
         this.firstName = new TextInput(this.driver, firstNameSelector);
         this.lastName = new TextInput(this.driver, lastNameSelector);
@@ -44,7 +48,7 @@ public class CheckoutPage extends BasePage {
         this.phone = new TextInput(this.driver, phoneSelector);
     }
 
-    private void fillInAvailableAddressData (User user){
+    private CheckoutPage fillInAvailableAddressData(User user) {
         firstName.type(user.getFirstname());
         lastName.type(user.getLastname());
         billingCompany.type(user.getCompanyName());
@@ -53,26 +57,33 @@ public class CheckoutPage extends BasePage {
         country.selectByText(user.getAddress().getCountry());
         email.type(user.getEmail());
         phone.type(user.getPhone());
+        return this;
     }
 
-    private void fillInAddressDataAfterReload (User user){
+    private CheckoutPage fillInAddressDataAfterReload(User user) {
 
         state = new TextInput(driver, stateSelector);
         postalCode = new TextInput(driver, postalCodeSelector);
         state.type(user.getAddress().getState());
         postalCode.type(user.getAddress().getPostalCode());
+        return this;
     }
 
-    public void fillInCompleteAddress(User user){
+    public CheckoutPage fillInCompleteAddress(User user) {
         fillInAvailableAddressData(user);
         fillInAddressDataAfterReload(user);
+        return this;
     }
 
-    public void chooseSubmitOrder(){
+    public OrderConfirmationPage chooseSubmitOrder() {
         submitOrder = new Button(driver, submitOrderSelector);
-        submitOrder.click();
+        submitOrder.clickWithJs();
+        return new OrderConfirmationPage(driver);
     }
 
-
+    public String getMoneyOrderAddress() {
+        this.moneyOrderAddress = new Label(this.driver, moneyOrderAddressSelector);
+        return moneyOrderAddress.read();
+    }
 
 }
