@@ -13,7 +13,7 @@ import prerequisites.Preconditions;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ChangeAdressTest {
+public class ChangeAddressTest {
 
     private WebDriver driver;
     private MainPage mainPage;
@@ -34,7 +34,7 @@ public class ChangeAdressTest {
     }
 
     @Test
-    public void changeBilliingAddress() {
+    public void changeBillingAddress() {
         MyAccountPage myAccountPage = new MyAccountPage(driver);
         myAccountPage
                 .chooseBillingAndShippingInformation()

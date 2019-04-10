@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotEquals;
 
 public class CartTests {
@@ -68,16 +67,10 @@ public class CartTests {
                 .chooseProceedCheckout();
 
         CheckoutPage checkoutPage = new CheckoutPage(driver);
-        String moneyOrderAddress = checkoutPage
-                .getMoneyOrderAddress().replaceAll("\n", ",");
-
-        assertThat(moneyOrderAddress)
-                .contains("Vintage Bags")
-                .contains("350 Du Languedoc")
-                .contains("Bourcherville")
-                .contains("Canada")
-                .contains("QC")
-                .contains("J4B 0A4");
+        checkoutPage
+                .getMoneyOrderAddress();
+        checkoutPage.
+                isMoneyOrderAddressTheSame();
     }
 
     @Test
@@ -123,7 +116,7 @@ public class CartTests {
         assertNotEquals("Url is the same", "http://demo.shopizer.com:8080/shop/", this.driver.getCurrentUrl());
     }
 
-    @Test //TODO fix problem with sending of the quantity
+    @Test
     public void recalculateItemInCart() {
         mainPage
                 .ChooseHandbagsCategory();

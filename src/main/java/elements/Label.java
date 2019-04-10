@@ -26,9 +26,4 @@ public class Label {
         return this.element.getAttribute("value");
     }
 
-    public Label inputValue() {
-        this.element.clear();
-        this.element.sendKeys("2");
-        return this;
-    }
 }

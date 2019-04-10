@@ -2,6 +2,7 @@ package pages;
 
 import elements.Button;
 import elements.Label;
+import elements.TextInput;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -40,8 +41,8 @@ public class ReviewOrderPage extends BasePage {
         proceedToCheckout.click();
     }
 
-    public ReviewOrderPage changeItemQuantity(String string) {
-        new Label(this.driver, addedItemNameSelector).inputValue();
+    public ReviewOrderPage changeItemQuantity(String number) {
+        new TextInput(this.driver, addedItemQuantitySelector).numberInput(number);
         return this;
     }
 
