@@ -1,5 +1,8 @@
 package dataModels;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bag {
 
     private BagType bagType;
@@ -7,6 +10,7 @@ public class Bag {
     private String bagProductCode;
     private int bagAvailability;
     private double bagPrice;
+    private List<Opinion> bagOpinions;
 
     public Bag(BagType bagType, String bagName, int bagAvailability, String bagProductCode, double bagPrice) {
         this.bagType = bagType;
@@ -14,6 +18,17 @@ public class Bag {
         this.bagProductCode = bagProductCode;
         this.bagAvailability = bagAvailability;
         this.bagPrice = bagPrice;
+        this.bagOpinions = new ArrayList<Opinion>();
+    }
+
+
+    public void addOpinion(Opinion opinion) {
+        this.bagOpinions.add(opinion);
+    }
+
+    public List<Opinion> getBagOpinions() {
+
+        return this.bagOpinions;
     }
 
     public BagType getBagType() {
