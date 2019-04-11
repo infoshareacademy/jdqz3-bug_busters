@@ -13,7 +13,7 @@ public class HandbagsCataloguePage extends BasePage {
     private Button checkout;
     private By checkoutSelector = By.xpath("//div[contains(@class, 'shop-cart')]//a[text()='Checkout']");
     private Button selectBag;
-    private By selectBagSelector = By.xpath("//a[@href='shop/product/chic-vintage-deville.html']");
+    private By selectBagSelector = By.xpath("//section[@class='products-grid']//a[@class='listing-product-name']/h3[text()='Chic vintage DeVille']");
 
     public HandbagsCataloguePage(WebDriver driver) {
         super(driver);

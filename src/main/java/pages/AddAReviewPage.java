@@ -28,7 +28,7 @@ public class AddAReviewPage extends BasePage {
     private Button submitButton;
     private By submitButtonSelector = By.cssSelector("form#review button.btn");
     private Label alertLabel;
-    private By alertLabelSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Register']"); //TODO do zmiany selctor
+    private By alertLabelSelector = By.xpath("//div[@id='review'] //div[contains(text(),'successfully created')]");
 
     public AddAReviewPage(WebDriver driver) {
         super(driver);

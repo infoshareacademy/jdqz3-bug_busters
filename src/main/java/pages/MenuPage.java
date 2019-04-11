@@ -20,7 +20,7 @@ public class MenuPage extends BasePage {
     private Button register;
     private By signInSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Sign in']");
     private Button signIn;
-    private By logoSelector = By.xpath("//img[@class='logoimage']");
+    private By logoSelector = By.cssSelector("div[class='logo']");
     private Button logo;
 
     public MenuPage(WebDriver driver) {
