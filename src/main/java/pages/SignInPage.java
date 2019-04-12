@@ -43,7 +43,6 @@ public class SignInPage extends BasePage {
     }
 
 
-
     public boolean isLoginFailed(){
         String message = "Login Failed. Username or Password is incorrect.";
         this.loginErrorMessage = new Label(this.driver, loginErrorSelector);

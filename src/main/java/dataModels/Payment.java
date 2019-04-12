@@ -10,7 +10,7 @@ public class Payment {
     private String postalCode;
 
 
-    public Payment(String name, String streetAddress, String city, String stateProvince, String country,String postalCode) {
+    public Payment(String name, String streetAddress, String city, String stateProvince, String country, String postalCode) {
         this.name = name;
         this.streetAddress = streetAddress;
         this.city = city;
