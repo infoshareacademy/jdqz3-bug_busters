@@ -1,5 +1,7 @@
 package tests;
 
+import categories.AdditionalTests;
+import categories.MainTests;
 import dataModels.User;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
@@ -7,13 +9,14 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.MainPage;
 import pages.MenuPage;
 import pages.SignInPage;
 import prerequisites.Preconditions;
-import org.junit.runner.RunWith;
 
 
 @RunWith(JUnitParamsRunner.class)
@@ -39,8 +42,8 @@ public class LoginTests {
         mainPage.close();
     }
 
-
     @Test
+    @Category(AdditionalTests.class)
     public void logout() {
         MenuPage menuPage = new MenuPage(driver);
         menuPage.chooseSignIn()
@@ -51,8 +54,8 @@ public class LoginTests {
         Assert.assertTrue("Logout process has failed", menuPage.isUserLoggedOut());
     }
 
-
     @Test
+    @Category(AdditionalTests.class)
     public void loginPositiveScenario() {
         MenuPage menuPage = new MenuPage(driver);
         menuPage
@@ -63,9 +66,9 @@ public class LoginTests {
         Assert.assertTrue("Login process has failed", menuPage.isUserLoggedIn(user) );
     }
 
-
     @Test
     @Parameters(method = "loginParams")
+    @Category(MainTests.class)
     public void loginWithIncorrectData(String mail, String pass){
         MenuPage menuPage = new MenuPage(driver);
 
@@ -86,8 +89,8 @@ public class LoginTests {
         };
     }
 
-
     @Test
+    @Category(AdditionalTests.class)
     public void loginWithIncorrectPassword() {
 
         MenuPage menuPage = new MenuPage(driver);
@@ -96,6 +99,4 @@ public class LoginTests {
         SignInPage signInPage = new SignInPage(driver);
         Assert.assertTrue("There is no proper message", signInPage.isLoginFailed());
     }
-
-
 }

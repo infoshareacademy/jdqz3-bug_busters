@@ -13,7 +13,6 @@ public class HandbagsCataloguePage extends BasePage {
     private Button checkout;
     private By checkoutSelector = By.xpath("//div[contains(@class, 'shop-cart')]//a[text()='Checkout']");
 
-
     public HandbagsCataloguePage(WebDriver driver) {
         super(driver);
 

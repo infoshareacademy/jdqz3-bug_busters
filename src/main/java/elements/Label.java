@@ -11,7 +11,6 @@ public class Label {
     private WebElement element;
     private WebDriver driver;
 
-
     public Label(WebDriver driver, By by) {
         this.driver = driver;
         WebDriverWait wait = new WebDriverWait(this.driver, timeout);
@@ -25,5 +24,4 @@ public class Label {
     public String getValue() {
         return this.element.getAttribute("value");
     }
-
 }

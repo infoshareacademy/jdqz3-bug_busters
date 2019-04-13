@@ -93,5 +93,4 @@ public class CheckoutPage extends BasePage {
         Payment payment = new Payment();
         return payment.equals(getMoneyOrderAddress());
     }
-
 }

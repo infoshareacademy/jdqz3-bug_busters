@@ -11,22 +11,16 @@ public class MyAccountPage extends BasePage {
 
     private Button myAccount;
     private By myAccountSelector = By.xpath("//a[@href='/shop/customer/dashboard.html']");
-
     private Button billingAndShippingInformation;
     private By billingAndShippingInformationSelector = By.xpath("//a[@href='/shop/customer/billing.html']");
-
     private Button changePassword;
     private By changePasswordSelector = By.xpath("//a[contains(text(),'Change password')]");
-
     private Button logout;
     private By logoutSelector = By.xpath("//ul[@class='nav nav-list']//a[contains(text(),'Logout')]");
-
     private Button editBillingAddress;
     private By editBillingAddressSelector = By.xpath("//p[contains(text(),'Billing Address')]//a[text()='Edit']");
-
     private Button addNewShippingAddress;
     private By addNewShippingAddressSelector = By.xpath("//a[contains(text(),'Add a new address')]");
-
     private TextInput currentPassword;
     private By currentPasswordSelector = By.id("currentPassword");
     private TextInput newPassword;
@@ -35,8 +29,6 @@ public class MyAccountPage extends BasePage {
     private By repeatPasswordSelector = By.id("checkPassword");
     private Button changePasswordButton;
     private By changePasswordButtonSelector = By.id("submitChangePassword");
-
-
     private Label invalidPassword;
     private By invalidPasswordSelector = By.id("password.errors");
 
@@ -100,5 +92,4 @@ public class MyAccountPage extends BasePage {
         this.invalidPassword = new Label(this.driver, invalidPasswordSelector);
         return this.invalidPassword.read();
     }
-
 }

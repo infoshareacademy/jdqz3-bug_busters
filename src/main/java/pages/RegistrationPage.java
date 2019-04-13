@@ -35,7 +35,6 @@ public class RegistrationPage extends BasePage {
         this.email = new TextInput(this.driver, emailSelector);
         this.password = new TextInput(this.driver, passwordSelector);
         this.repeatPassword = new TextInput(this.driver, repeatPasswordSelector);
-
     }
 
     public RegistrationPage fillInRegistrationData(User user){
@@ -46,14 +45,11 @@ public class RegistrationPage extends BasePage {
         this.email.type(user.getEmail());
         this.password.type(user.getPassword());
         this.repeatPassword.type(user.getPassword());
-
         return this;
     }
 
     public void createAnAccount(){
         this.createAnAccountBtn = new Button(this.driver, createAnAccountSelector);
         this.createAnAccountBtn.click();
-//        return this;
     }
-
 }

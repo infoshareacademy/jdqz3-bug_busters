@@ -12,7 +12,6 @@ public class TextInput {
     private WebElement element;
     private WebDriver driver;
 
-
     public TextInput(WebDriver driver, By by){
         this.driver = driver;
         WebDriverWait wait = new WebDriverWait(this.driver, timeout);

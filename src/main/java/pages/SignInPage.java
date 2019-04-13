@@ -18,7 +18,6 @@ public class SignInPage extends BasePage {
     private By loginErrorSelector = By.id("loginError");
     private Label loginErrorMessage;
 
-
     public SignInPage(WebDriver driver) {
         super(driver);
         this.customerEmail = new TextInput(this.driver, customerEmailSelector);

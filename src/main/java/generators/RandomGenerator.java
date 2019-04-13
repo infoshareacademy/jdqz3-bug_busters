@@ -5,7 +5,6 @@ import org.apache.commons.text.RandomStringGenerator;
 
 import java.util.Random;
 
-
 public class RandomGenerator {
 
     protected static String generateRandomString(int length){

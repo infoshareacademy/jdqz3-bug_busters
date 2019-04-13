@@ -66,7 +66,6 @@ public class AccountAddressPage extends BasePage {
         return this;
     }
 
-
     public void clickChangeAddressButton() {
         this.changeAddressButton = new Button(this.driver, changeAddressSelector);
         changeAddressButton.safeClick();
@@ -81,5 +80,4 @@ public class AccountAddressPage extends BasePage {
         String requestCompleted = "Request completed with success";
         return requestCompleted.equals(getCompletedRequestedConfirmation());
     }
-
 }

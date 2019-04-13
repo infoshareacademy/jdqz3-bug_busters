@@ -22,8 +22,6 @@ public class Preconditions extends BasePage{
 
     public void logout() {
         MenuPage menuPage = new MenuPage(driver);
-
         menuPage.chooseLogout();
     }
-
 }

@@ -17,5 +17,4 @@ public class OrderConfirmationPage extends BasePage {
     public String getConfirmationText() {
         return this.confirmationText.read();
     }
-
 }

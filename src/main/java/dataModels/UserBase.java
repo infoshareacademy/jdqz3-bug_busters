@@ -1,6 +1,5 @@
 package dataModels;
 
-
 import generators.CredentialsGenerator;
 
 public class UserBase {
@@ -13,7 +12,6 @@ public class UserBase {
     private String phone;
     private String companyName;
     protected boolean isRegistred;
-
 
     protected UserBase(){
         this.firstname = CredentialsGenerator.generateFirstname();
