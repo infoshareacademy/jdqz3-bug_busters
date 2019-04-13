@@ -21,6 +21,9 @@ public class MenuPage extends BasePage {
     private By signInSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Sign in']");
     private Button signIn;
 
+    private By contactUsSelektor = By.xpath("//button[@class='btn btn-default header-left-menu type=']//a[contains(text(),'Contact us')]");
+    private Button contactUs;
+
     public MenuPage(WebDriver driver) {
         super(driver);
     }
@@ -80,5 +83,11 @@ public class MenuPage extends BasePage {
     }
 
     public boolean isUserLoggedOut() { return getTextFromAccountMenu().contains("My Account"); }
+
+    public ContactUsPage clickContactUs() {
+        this.contactUs = new Button(this.driver, contactUsSelektor);
+        this.contactUs.click();
+        return new ContactUsPage(driver);
+    }
 
 }

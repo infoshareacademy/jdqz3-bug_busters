@@ -11,7 +11,7 @@ public class SearchModePage extends BasePage {
     private By searchFieldSelector = By.id("searchField");
     private TextInput searchField;
 
-    private By searchModeSelector = By.xpath("//a[contains(text(),'searchMode')]");
+    private By searchModeSelector = By.xpath("//button[@type='submit']");
     private Button searchMode;
 
     private By numberOfItemsSelector = By.id("products-qty");

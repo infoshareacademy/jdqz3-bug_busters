@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.ContactUsPage;
 import pages.MainPage;
+import pages.MenuPage;
 
 public class ContactUsTests {
 
@@ -20,6 +21,7 @@ public class ContactUsTests {
     public void startBrowser() {
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
+        user = new User(false);
     }
 
     @After
@@ -29,9 +31,10 @@ public class ContactUsTests {
 
     @Test
     public void contactUs() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.clickContactUs();
         ContactUsPage contactUsPage = new ContactUsPage(driver);
         contactUsPage
-                .clickContactUs()
                 .fillInContactUsData(user)
                 .clickCaptcha()
                 .clickSendButton();

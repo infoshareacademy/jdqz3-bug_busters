@@ -32,6 +32,6 @@ public class SearchModeTests {
                 .fillInData()
                 .clickSearchButton();
 
-        Assert.assertEquals("6 item(s) found", searchModePage.getTextFromItemsLabel());
+        Assert.assertEquals("7 item(s) found", searchModePage.getTextFromItemsLabel());
     }
 }

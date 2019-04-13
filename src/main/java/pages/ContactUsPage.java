@@ -11,25 +11,24 @@ import org.openqa.selenium.WebDriver;
 
 public class ContactUsPage extends BasePage {
 
-    private By contactUsSelektor = By.xpath("//a[contains(text(),'Contact Us')]");
-    private Button contactUs;
 
-    private By nameSelektor = By.id("name");
+
+    private By nameSelector = By.id("name");
     private TextInput name;
 
-    private By emailSelektor = By.id("email");
+    private By emailSelector = By.id("email");
     private TextInput email;
 
-    private By subjectSelektor = By.id("subject");
+    private By subjectSelector = By.id("subject");
     private TextInput subject;
 
-    private By commentsSelektor = By.id("comment");
+    private By commentsSelector = By.id("comment");
     private TextInput comments;
 
-    private By sendSelektor = By.xpath("//a[contains(text(),'submitContact')]");
+    private By sendSelector = By.xpath("//a[contains(text(),'submitContact')]");
     private Button send;
 
-    private By captchaSelektor = By.xpath("//a[contains(text(),'recaptcha-anchor')]");
+    private By captchaSelector = By.id("recaptcha-anchor");
     private Button captcha;
 
     private By sentSuccessSelector = By.id("store.success");
@@ -37,37 +36,29 @@ public class ContactUsPage extends BasePage {
 
     public ContactUsPage (WebDriver driver) {
         super(driver);
-        this.name = new TextInput(this.driver, nameSelektor);
-        this.email = new TextInput(this.driver, emailSelektor);
-        this.subject = new TextInput(this.driver, subjectSelektor);
-        this.comments = new TextInput(this.driver, commentsSelektor);
+        this.name = new TextInput(this.driver, nameSelector);
+        this.email = new TextInput(this.driver, emailSelector);
+        this.subject = new TextInput(this.driver, subjectSelector);
+        this.comments = new TextInput(this.driver, commentsSelector);
     }
 
     public ContactUsPage fillInContactUsData(User user){
 
         this.name.type(user.getFirstname());
         this.email.type(user.getEmail());
-        this.subject.type("123");
-        this.comments.type("abc123");
+        this.subject.type(user.getCompanyName());
+        this.comments.type(user.getCompanyName()+ user.getPhone());
         return this;
-
-//        generator.generate(length)
     }
 
     public ContactUsPage clickCaptcha() {
-        this.captcha = new Button(this.driver, captchaSelektor);
+        this.captcha = new Button(this.driver, captchaSelector);
         this.captcha.click();
         return this;
     }
 
-    public ContactUsPage clickContactUs() {
-        this.contactUs = new Button(this.driver, contactUsSelektor);
-        this.contactUs.click();
-        return this;
-    }
-
     public ContactUsPage clickSendButton() {
-        this.send = new Button (this.driver, sendSelektor);
+        this.send = new Button (this.driver, sendSelector);
         this.send.click();
         return this;
     }
