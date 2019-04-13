@@ -16,20 +16,17 @@ public class HandbagsCataloguePage extends BasePage {
 
     public HandbagsCataloguePage(WebDriver driver) {
         super(driver);
-
-        this.shoppingCart = new Button(this.driver, shoppingCartSelector);
+    this.addToCart = new Button(this.driver, addToCartSelector);
+    this.shoppingCart = new Button(this.driver, shoppingCartSelector);
     }
 
-    public HandbagsCataloguePage addBagToCart() {
-        this.addToCart = new Button(this.driver, addToCartSelector);
+    public void addBagToCart(){
         this.addToCart.click();
-        return this;
     }
 
-    public HandbagsCataloguePage proceedToCheckout() {
+    public void proceedToCheckout(){
         this.shoppingCart.safeClick();
         this.checkout = new Button(this.driver, checkoutSelector);
         this.checkout.clickWithJs();
-        return this;
     }
 }
