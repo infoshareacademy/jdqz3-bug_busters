@@ -9,12 +9,12 @@ public class OrderConfirmationPage extends BasePage {
     private By confirmationTextSelect = By.cssSelector("#main-content h1");
     private Label confirmationText;
 
-    public OrderConfirmationPage (WebDriver driver){
+    public OrderConfirmationPage(WebDriver driver) {
         super(driver);
         this.confirmationText = new Label(this.driver, confirmationTextSelect);
     }
 
-    public String getConfirmationText(){
+    public String getConfirmationText() {
         return this.confirmationText.read();
     }
 

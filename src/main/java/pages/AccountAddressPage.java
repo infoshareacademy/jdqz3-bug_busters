@@ -10,9 +10,6 @@ import org.openqa.selenium.WebDriver;
 
 public class AccountAddressPage extends BasePage {
 
-    private Button editBillingAddress;
-    private By editBillingAddressSelector = By.xpath("//p[contains(text(),'Billing Address')]");
-
     private TextInput firstNameInput;
     private By firstNameSelector = By.id("firstName");
     private TextInput lastNameInput;
@@ -38,7 +35,6 @@ public class AccountAddressPage extends BasePage {
     private Label requestInformation;
     private By requestInformationSelector = By.xpath("//div[@class='alert alert-success']");
 
-
     public AccountAddressPage(WebDriver driver) {
         super(driver);
         this.firstNameInput = new TextInput(this.driver, firstNameSelector);
@@ -52,21 +48,24 @@ public class AccountAddressPage extends BasePage {
         this.phoneNumberInput = new TextInput(this.driver, phoneNumberSelector);
     }
 
-    private void fillInAddress(User user) {
+    private AccountAddressPage prepareAddressData(User user) {
         firstNameInput.type(user.getFirstname());
         lastNameInput.type(user.getLastname());
         companyNameInput.type(user.getCompanyName());
         streetAddressInput.type(user.getAddress().getStreetAddress());
         cityInput.type(user.getAddress().getCity());
         countrySelect.selectByText(user.getAddress().getCountry());
+        stateProvinceInput.type(user.getAddress().getState());
         postalcodeInput.type(user.getAddress().getPostalCode());
         phoneNumberInput.type(user.getPhone());
+        return this;
     }
 
-    public void clickEditBillingAddressButton() {
-        this.editBillingAddress = new Button(this.driver, editBillingAddressSelector);
-        editBillingAddress.safeClick();
+    public AccountAddressPage fillInAddress(User user) {
+        prepareAddressData(user);
+        return this;
     }
+
 
     public void clickChangeAddressButton() {
         this.changeAddressButton = new Button(this.driver, changeAddressSelector);
