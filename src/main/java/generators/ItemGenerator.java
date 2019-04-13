@@ -1,7 +1,6 @@
 package generators;
 
-import dataModels.Bag;
-import dataModels.BagType;
+import dataModels.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +19,7 @@ public class ItemGenerator extends RandomGenerator {
     private static Bag vintageBagWithLeatherBands = new Bag(BagType.BAGS, "Vintage bag with leather bands", 9, "NK033", 68.00d);
 
     public static Bag generateBags() {
+
         List<Bag> handbagsList = Arrays.asList(vintageCourier, chicVintage, vintageExotik, multiUseHandBag, vintageBag, vintageChic, vintageBeachBag, retroStyleBag,
                 vintageLaptopBag, vintageBagWithLeatherBands);
 

@@ -12,12 +12,14 @@ public class HandbagsCataloguePage extends BasePage {
     private By shoppingCartSelector = By.cssSelector("div#miniCartSummary a");
     private Button checkout;
     private By checkoutSelector = By.xpath("//div[contains(@class, 'shop-cart')]//a[text()='Checkout']");
-
+    private Button selectBag;
+    private By selectBagSelector = By.xpath("//section[@class='products-grid']//a[@class='listing-product-name']/h3[text()='Chic vintage DeVille']");
 
     public HandbagsCataloguePage(WebDriver driver) {
         super(driver);
-
+        this.addToCart = new Button(this.driver, addToCartSelector);
         this.shoppingCart = new Button(this.driver, shoppingCartSelector);
+        this.selectBag = new Button(this.driver, selectBagSelector);
     }
 
     public HandbagsCataloguePage addBagToCart() {
@@ -31,5 +33,11 @@ public class HandbagsCataloguePage extends BasePage {
         this.checkout = new Button(this.driver, checkoutSelector);
         this.checkout.clickWithJs();
         return this;
+    }
+
+    public BagDetailPage chooseBagToReview(){
+        this.selectBag.click();
+        return new BagDetailPage(driver);
+
     }
 }
