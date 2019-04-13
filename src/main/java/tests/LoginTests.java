@@ -1,6 +1,8 @@
 package tests;
 
 import dataModels.User;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,7 +13,10 @@ import pages.MainPage;
 import pages.MenuPage;
 import pages.SignInPage;
 import prerequisites.Preconditions;
+import org.junit.runner.RunWith;
 
+
+@RunWith(JUnitParamsRunner.class)
 public class LoginTests {
 
     private WebDriver driver;
@@ -19,10 +24,11 @@ public class LoginTests {
     private User user;
 
     @Before
-    public void startBrowser(){
+    public void startBrowser() {
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
         this.user = new User(false);
+
         Preconditions preconditions = new Preconditions(driver);
         preconditions.registration(user);
         preconditions.logout();
@@ -35,7 +41,7 @@ public class LoginTests {
 
 
     @Test
-    public void logout(){
+    public void logout() {
         MenuPage menuPage = new MenuPage(driver);
         menuPage.chooseSignIn()
                 .fillInLoginData(user)
@@ -47,7 +53,7 @@ public class LoginTests {
 
 
     @Test
-    public void loginPositiveScenario(){
+    public void loginPositiveScenario() {
         MenuPage menuPage = new MenuPage(driver);
         menuPage
                 .chooseSignIn()
@@ -59,25 +65,37 @@ public class LoginTests {
 
 
     @Test
-    public void loginWithoutData(){
+    @Parameters(method = "loginParams")
+    public void loginWithIncorrectData(String mail, String pass){
         MenuPage menuPage = new MenuPage(driver);
 
         menuPage
                 .chooseSignIn()
+                .fillInLoginDataWithIncorrectData(mail, pass)
                 .chooseSignInButton();
 
         SignInPage signInPage = new SignInPage(driver);
         Assert.assertTrue("There is no proper message", signInPage.isLoginFailed());
     }
 
+    private Object[][] loginParams() {
+
+        return new Object[][]{
+                {"login@incorrect", "pass1234"},
+                {"", ""}
+        };
+    }
+
 
     @Test
-    public void loginWithIncorrectPassword(){
+    public void loginWithIncorrectPassword() {
+
         MenuPage menuPage = new MenuPage(driver);
         menuPage.chooseSignIn().fillInLoginDataWithIncorrectPassword(user).chooseSignInButton();
 
         SignInPage signInPage = new SignInPage(driver);
         Assert.assertTrue("There is no proper message", signInPage.isLoginFailed());
     }
+
 
 }

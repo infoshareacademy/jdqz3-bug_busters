@@ -37,6 +37,12 @@ public class SignInPage extends BasePage {
         return this;
     }
 
+    public SignInPage fillInLoginDataWithIncorrectData(String mail, String pass) {
+        this.customerEmail.type(mail);
+        this.password.type(pass);
+        return this;
+    }
+
     public void chooseSignInButton() {
         this.signInBtn = new Button(this.driver, signInBtnSelector);
         this.signInBtn.click();
