@@ -20,6 +20,8 @@ public class MenuPage extends BasePage {
     private Button register;
     private By signInSelector = By.xpath("//ul[@class='click_menu_show']/li/a[text()='Sign in']");
     private Button signIn;
+    private By logoSelector = By.cssSelector("div[class='logo']");
+    private Button logo;
 
     public MenuPage(WebDriver driver) {
         super(driver);
@@ -72,6 +74,12 @@ public class MenuPage extends BasePage {
             this.logoutBtn = new Button(this.driver, this.logoutSelector);
             this.logoutBtn.click();
             return new MainPage(driver);
+    }
+
+    public MainPage chooseLogoBtn(){
+        this.logo = new Button(driver, this.logoSelector);
+        this.logo.click();
+        return new MainPage(driver);
     }
 
     public boolean isUserLoggedIn(User user) {
