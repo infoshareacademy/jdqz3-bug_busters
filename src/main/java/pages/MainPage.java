@@ -16,11 +16,8 @@ public class MainPage extends BasePage {
         this.handBagsCategoryTab = new Button(this.driver, this.handbagsSelector);
     }
 
-
     public HandbagsCataloguePage chooseHandbagsCategory(){
         this.handBagsCategoryTab.click();
         return new HandbagsCataloguePage(driver);
     }
-
-
 }

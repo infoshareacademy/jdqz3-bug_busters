@@ -10,7 +10,6 @@ public class Order {
     private User user;
     private UserBase notRegisterUser;
 
-
     public Order(Bag bag, Address address, User user) {
         this.bag = bag;
         this.address = address;

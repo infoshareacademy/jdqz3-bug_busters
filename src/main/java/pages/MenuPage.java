@@ -74,7 +74,6 @@ public class MenuPage extends BasePage {
             this.logoutBtn = new Button(this.driver, this.logoutSelector);
             this.logoutBtn.click();
             return new MainPage(driver);
-
     }
 
     public MainPage chooseLogoBtn(){
@@ -88,5 +87,4 @@ public class MenuPage extends BasePage {
     }
 
     public boolean isUserLoggedOut() { return getTextFromAccountMenu().contains("My Account"); }
-
 }

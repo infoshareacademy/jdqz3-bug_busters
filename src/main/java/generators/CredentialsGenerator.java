@@ -1,6 +1,5 @@
 package generators;
 
-
 public class CredentialsGenerator extends RandomGenerator{
     private static String emailDomain = "@example.com";
 

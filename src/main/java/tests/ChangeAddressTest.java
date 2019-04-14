@@ -1,9 +1,12 @@
 package tests;
 
+import categories.AdditionalTests;
+import categories.MainTests;
 import dataModels.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.AccountAddressPage;
@@ -34,6 +37,7 @@ public class ChangeAddressTest {
     }
 
     @Test
+    @Category(AdditionalTests.class)
     public void changeBillingAddress() {
         MyAccountPage myAccountPage = new MyAccountPage(driver);
         myAccountPage
@@ -47,6 +51,7 @@ public class ChangeAddressTest {
     }
 
     @Test
+    @Category(MainTests.class)
     public void addNewShippingAddress() {
         MyAccountPage myAccountPage = new MyAccountPage(driver);
         myAccountPage
@@ -58,5 +63,4 @@ public class ChangeAddressTest {
                 .clickChangeAddressButton();
         assertThat("Request completed with success", accountAddressPage.isRequestCompleted());
     }
-
 }

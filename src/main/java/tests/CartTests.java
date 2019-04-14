@@ -1,10 +1,13 @@
 package tests;
 
+import categories.AdditionalTests;
+import categories.MainTests;
 import dataModels.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
@@ -30,8 +33,9 @@ public class CartTests {
     }
 
     @Test
+    @Category(MainTests.class)
     public void purchaseOrderForNonRegisteredUserCompleted() {
-        mainPage.ChooseHandbagsCategory();
+        mainPage.chooseHandbagsCategory();
         HandbagsCataloguePage handbagsPage = new HandbagsCataloguePage(driver);
         handbagsPage
                 .addBagToCart()
@@ -54,9 +58,10 @@ public class CartTests {
     }
 
     @Test
+    @Category(AdditionalTests.class)
     public void isMoneyOrderTheSameAsOnTheMainPage() {
         mainPage
-                .ChooseHandbagsCategory();
+                .chooseHandbagsCategory();
         HandbagsCataloguePage handbagsPage = new HandbagsCataloguePage(driver);
         handbagsPage
                 .addBagToCart()
@@ -74,9 +79,10 @@ public class CartTests {
     }
 
     @Test
+    @Category(MainTests.class)
     public void areCartDetailsCorrect() {
         mainPage
-                .ChooseHandbagsCategory();
+                .chooseHandbagsCategory();
         HandbagsCataloguePage handbagsPage = new HandbagsCataloguePage(driver);
         handbagsPage
                 .addBagToCart()
@@ -88,9 +94,10 @@ public class CartTests {
     }
 
     @Test
+    @Category(AdditionalTests.class)
     public void isTotalAndSubtotalCorrect() {
         mainPage
-                .ChooseHandbagsCategory();
+                .chooseHandbagsCategory();
         HandbagsCataloguePage handbagsPage = new HandbagsCataloguePage(driver);
         handbagsPage
                 .addBagToCart()
@@ -102,9 +109,10 @@ public class CartTests {
     }
 
     @Test
+    @Category(AdditionalTests.class)
     public void isAppReloadedToTheMainPageAfterRemovingItemFromTheCart() {
         mainPage
-                .ChooseHandbagsCategory();
+                .chooseHandbagsCategory();
         HandbagsCataloguePage handbagsPage = new HandbagsCataloguePage(driver);
         handbagsPage
                 .addBagToCart()
@@ -117,9 +125,10 @@ public class CartTests {
     }
 
     @Test
+    @Category(AdditionalTests.class)
     public void recalculateItemInCart() {
         mainPage
-                .ChooseHandbagsCategory();
+                .chooseHandbagsCategory();
         HandbagsCataloguePage handbagsPage = new HandbagsCataloguePage(driver);
         handbagsPage
                 .addBagToCart()
@@ -131,5 +140,4 @@ public class CartTests {
                 .recalulateShoppingCart()
                 .isTotalAndSubtotalCorrect();
     }
-
 }

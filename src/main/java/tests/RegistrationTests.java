@@ -1,10 +1,12 @@
 package tests;
 
+import categories.AdditionalTests;
 import dataModels.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.MainPage;
@@ -29,6 +31,7 @@ public class RegistrationTests {
     }
 
     @Test
+    @Category(AdditionalTests.class)
     public void registrationPositiveScenario(){
         MenuPage menuPage = new MenuPage(driver);
 
@@ -38,6 +41,5 @@ public class RegistrationTests {
                 .createAnAccount();
 
         Assert.assertTrue("Registration process has failed", menuPage.isUserLoggedIn(user));
-
     }
 }

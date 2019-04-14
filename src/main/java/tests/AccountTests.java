@@ -1,10 +1,12 @@
 package tests;
 
+import categories.AdditionalTests;
 import dataModels.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.MainPage;
@@ -33,6 +35,7 @@ public class AccountTests {
     }
 
     @Test
+    @Category(AdditionalTests.class)
     public void isNewlyRegisteredUserNotLoggedInAfterLogout() {
         MyAccountPage myAccountPage = new MyAccountPage(driver);
         myAccountPage
@@ -43,6 +46,7 @@ public class AccountTests {
     }
 
     @Test
+    @Category(AdditionalTests.class)
     public void changePasswordIncorrect() {
         MyAccountPage myAccountPage = new MyAccountPage(driver);
         myAccountPage
@@ -51,5 +55,4 @@ public class AccountTests {
                 .clickChangePasswordButton();
         Assert.assertEquals("Invalid password", myAccountPage.getTextFromPasswordLabel());
     }
-
 }

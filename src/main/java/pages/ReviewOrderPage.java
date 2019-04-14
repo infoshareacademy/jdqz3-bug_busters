@@ -10,7 +10,6 @@ public class ReviewOrderPage extends BasePage {
 
     private Button proceedToCheckout;
     private By proceedToCheckoutSelector = By.xpath("//a[text() = 'Proceed to checkout']");
-
     private Label addedItemNameLabel;
     private By addedItemNameSelector = By.cssSelector("td[data-th='Item'] span");
     private Label addedItemQuantityLabel;
@@ -19,18 +18,14 @@ public class ReviewOrderPage extends BasePage {
     private By addedItemPriceSelector = By.cssSelector("td[data-th='Price']");
     private Label addedItemTotalLabel;
     private By addedItemTotalSelector = By.cssSelector("td[data-th='Total']");
-
     private Label subtotalShoppingCart;
     private By subtotalShoppingCartSelector = By.xpath("//tr[1]//td[1]//span[contains(@class, 'amount')]");
     private Label totalShoppingCart;
     private By totalShoppingCartSelector = By.xpath("//tr[2]//td[1]//span[contains(@class, 'amount')]");
-
     private Button recalculateShoppingcart;
     private By recalculateShoppingcartSelector = By.xpath("//a[contains(text(),'Recalculate')]");
-
     private Button removeFromCart;
     private By removeFromCartSelector = By.xpath("//i[@class='fa fa-times']");
-
 
     public ReviewOrderPage(WebDriver driver) {
         super(driver);
@@ -90,6 +85,5 @@ public class ReviewOrderPage extends BasePage {
         return actualName.equals(expectedName) && actualQuantity == expectedQuantity
                 && actualPrice == expectedPrice && actualTotal == expectedTotal;
     }
-
 }
 

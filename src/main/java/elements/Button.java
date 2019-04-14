@@ -37,5 +37,4 @@ public class Button {
         runner.executeScript(script, this.element);
         return this;
     }
-
 }
