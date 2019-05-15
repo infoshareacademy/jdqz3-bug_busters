@@ -1,5 +1,6 @@
 package tests;
 
+import addins.Snapshot;
 import categories.AdditionalTests;
 import categories.MainTests;
 import dataModels.User;
@@ -38,29 +39,41 @@ public class ChangeAddressTest {
 
     @Test
     @Category(AdditionalTests.class)
-    public void changeBillingAddress() {
-        MyAccountPage myAccountPage = new MyAccountPage(driver);
-        myAccountPage
-                .chooseBillingAndShippingInformation()
-                .clickEditBillingAddressButton();
-        AccountAddressPage accountAddressPage = new AccountAddressPage(driver);
-        accountAddressPage
-                .fillInAddress(user)
-                .clickChangeAddressButton();
-        assertThat("Request completed with success", accountAddressPage.isRequestCompleted());
+    public void changeBillingAddress() throws Exception {
+        try {
+            MyAccountPage myAccountPage = new MyAccountPage(driver);
+            myAccountPage
+                    .chooseBillingAndShippingInformation()
+                    .clickEditBillingAddressButton();
+            AccountAddressPage accountAddressPage = new AccountAddressPage(driver);
+            accountAddressPage
+                    .fillInAddress(user)
+                    .clickChangeAddressButton();
+            assertThat("Request completed with success", accountAddressPage.isRequestCompleted());
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
 
     @Test
     @Category(MainTests.class)
-    public void addNewShippingAddress() {
-        MyAccountPage myAccountPage = new MyAccountPage(driver);
-        myAccountPage
-                .chooseBillingAndShippingInformation()
-                .clickAddNewShippingAddress();
-        AccountAddressPage accountAddressPage = new AccountAddressPage(driver);
-        accountAddressPage
-                .fillInAddress(user)
-                .clickChangeAddressButton();
-        assertThat("Request completed with success", accountAddressPage.isRequestCompleted());
+    public void addNewShippingAddress() throws Exception {
+        try {
+            MyAccountPage myAccountPage = new MyAccountPage(driver);
+            myAccountPage
+                    .chooseBillingAndShippingInformation()
+                    .clickAddNewShippingAddress();
+            AccountAddressPage accountAddressPage = new AccountAddressPage(driver);
+            accountAddressPage
+                    .fillInAddress(user)
+                    .clickChangeAddressButton();
+            assertThat("Request completed with success", accountAddressPage.isRequestCompleted());
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package tests;
 
+import addins.Snapshot;
 import dataModels.Opinion;
 import dataModels.RatingValue;
 import dataModels.User;
@@ -20,7 +21,7 @@ public class AddAReviewTests {
     private User user;
 
     @Before
-    public void startBrowser(){
+    public void startBrowser() {
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
         this.user = new User(false);
@@ -29,28 +30,26 @@ public class AddAReviewTests {
     }
 
     @After
-    public void closeBrowser(){
+    public void closeBrowser() {
         mainPage.close();
     }
 
     @Test
-    public void addAReview() {
-        MenuPage menuPage = new MenuPage(driver);
+    public void addAReview() throws Exception {
+        try {
+            MenuPage menuPage = new MenuPage(driver);
+            MainPage mainPage = menuPage.chooseLogoBtn();
+            HandbagsCataloguePage handbagsCataloguePage = mainPage.chooseHandbagsCategory();
+            BagDetailPage bagDetailPage = handbagsCataloguePage.chooseBagToReview();
+            AddAReviewPage addAReviewPage = bagDetailPage.chooseWriteAReviewBtn();
+            addAReviewPage.typeAReviewText(new Opinion(this.user, RatingValue.good, DescriptionGenerator.generateRandomDescription()));
+            addAReviewPage.submitAReview();
 
-        MainPage mainPage = menuPage.chooseLogoBtn();
-
-        HandbagsCataloguePage handbagsCataloguePage = mainPage.chooseHandbagsCategory();
-
-        BagDetailPage bagDetailPage = handbagsCataloguePage.chooseBagToReview();
-
-        AddAReviewPage addAReviewPage = bagDetailPage.chooseWriteAReviewBtn();
-
-        addAReviewPage.typeAReviewText(new Opinion(this.user, RatingValue.good, DescriptionGenerator.generateRandomDescription()));
-        addAReviewPage.submitAReview();
-
-        Assert.assertTrue("A review has not been added", addAReviewPage.isAReviewAdded());
-
-
+            Assert.assertTrue("A review has not been added", addAReviewPage.isAReviewAdded());
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
-
 }

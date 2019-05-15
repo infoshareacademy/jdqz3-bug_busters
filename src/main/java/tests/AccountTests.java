@@ -1,5 +1,6 @@
 package tests;
 
+import addins.Snapshot;
 import categories.AdditionalTests;
 import dataModels.User;
 import org.junit.After;
@@ -36,23 +37,36 @@ public class AccountTests {
 
     @Test
     @Category(AdditionalTests.class)
-    public void isNewlyRegisteredUserNotLoggedInAfterLogout() {
-        MyAccountPage myAccountPage = new MyAccountPage(driver);
-        myAccountPage
-                .chooseLogout();
-        MenuPage menuPage = new MenuPage(driver);
-        menuPage.
-                isUserLoggedOut();
+    public void isNewlyRegisteredUserNotLoggedInAfterLogout() throws Exception {
+        try {
+            MyAccountPage myAccountPage = new MyAccountPage(driver);
+            myAccountPage
+                    .chooseLogout();
+            MenuPage menuPage = new MenuPage(driver);
+            menuPage.
+                    isUserLoggedOut();
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
+
 
     @Test
     @Category(AdditionalTests.class)
-    public void changePasswordIncorrect() {
-        MyAccountPage myAccountPage = new MyAccountPage(driver);
-        myAccountPage
-                .chooseChangePassword()
-                .changeActualPassword(user)
-                .clickChangePasswordButton();
-        Assert.assertEquals("Invalid password", myAccountPage.getTextFromPasswordLabel());
+    public void changePasswordIncorrect() throws Exception {
+        try {
+            MyAccountPage myAccountPage = new MyAccountPage(driver);
+            myAccountPage
+                    .chooseChangePassword()
+                    .changeActualPassword(user)
+                    .clickChangePasswordButton();
+            Assert.assertEquals("Invalid password", myAccountPage.getTextFromPasswordLabel());
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
 }

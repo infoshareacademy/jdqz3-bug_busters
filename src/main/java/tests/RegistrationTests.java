@@ -1,5 +1,6 @@
 package tests;
 
+import addins.Snapshot;
 import categories.AdditionalTests;
 import dataModels.User;
 import org.junit.After;
@@ -32,14 +33,20 @@ public class RegistrationTests {
 
     @Test
     @Category(AdditionalTests.class)
-    public void registrationPositiveScenario(){
-        MenuPage menuPage = new MenuPage(driver);
+    public void registrationPositiveScenario() throws Exception {
+        try {
+            MenuPage menuPage = new MenuPage(driver);
 
-                menuPage
-                .chooseRegister()
-                .fillInRegistrationData(user)
-                .createAnAccount();
+            menuPage
+                    .chooseRegister()
+                    .fillInRegistrationData(user)
+                    .createAnAccount();
 
-        Assert.assertTrue("Registration process has failed", menuPage.isUserLoggedIn(user));
+            Assert.assertTrue("Registration process has failed", menuPage.isUserLoggedIn(user));
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
 }
