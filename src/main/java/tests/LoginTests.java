@@ -1,5 +1,6 @@
 package tests;
 
+import addins.Snapshot;
 import categories.AdditionalTests;
 import categories.MainTests;
 import dataModels.User;
@@ -38,47 +39,65 @@ public class LoginTests {
     }
 
     @After
-    public void closeBrowser(){
+    public void closeBrowser() {
         mainPage.close();
     }
 
     @Test
     @Category(AdditionalTests.class)
-    public void logout() {
-        MenuPage menuPage = new MenuPage(driver);
-        menuPage.chooseSignIn()
-                .fillInLoginData(user)
-                .chooseSignInButton();
-        menuPage.chooseLogout();
+    public void logout() throws Exception {
+        try {
+            MenuPage menuPage = new MenuPage(driver);
+            menuPage.chooseSignIn()
+                    .fillInLoginData(user)
+                    .chooseSignInButton();
+            menuPage.chooseLogout();
 
-        Assert.assertTrue("Logout process has failed", menuPage.isUserLoggedOut());
+            Assert.assertTrue("Logout process has failed", menuPage.isUserLoggedOut());
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
 
     @Test
     @Category(AdditionalTests.class)
-    public void loginPositiveScenario() {
-        MenuPage menuPage = new MenuPage(driver);
-        menuPage
-                .chooseSignIn()
-                .fillInLoginData(user)
-                .chooseSignInButton();
+    public void loginPositiveScenario() throws Exception {
+        try {
+            MenuPage menuPage = new MenuPage(driver);
+            menuPage
+                    .chooseSignIn()
+                    .fillInLoginData(user)
+                    .chooseSignInButton();
 
-        Assert.assertTrue("Login process has failed", menuPage.isUserLoggedIn(user) );
+            Assert.assertTrue("Login process has failed", menuPage.isUserLoggedIn(user));
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
 
     @Test
     @Parameters(method = "loginParams")
     @Category(MainTests.class)
-    public void loginWithIncorrectData(String mail, String pass){
-        MenuPage menuPage = new MenuPage(driver);
+    public void loginWithIncorrectData(String mail, String pass) throws Exception {
+        try {
+            MenuPage menuPage = new MenuPage(driver);
 
-        menuPage
-                .chooseSignIn()
-                .fillInLoginDataWithIncorrectData(mail, pass)
-                .chooseSignInButton();
+            menuPage
+                    .chooseSignIn()
+                    .fillInLoginDataWithIncorrectData(mail, pass)
+                    .chooseSignInButton();
 
-        SignInPage signInPage = new SignInPage(driver);
-        Assert.assertTrue("There is no proper message", signInPage.isLoginFailed());
+            SignInPage signInPage = new SignInPage(driver);
+            Assert.assertTrue("There is no proper message", signInPage.isLoginFailed());
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
 
     private Object[][] loginParams() {
@@ -91,12 +110,17 @@ public class LoginTests {
 
     @Test
     @Category(AdditionalTests.class)
-    public void loginWithIncorrectPassword() {
+    public void loginWithIncorrectPassword() throws Exception {
+        try {
+            MenuPage menuPage = new MenuPage(driver);
+            menuPage.chooseSignIn().fillInLoginDataWithIncorrectPassword(user).chooseSignInButton();
 
-        MenuPage menuPage = new MenuPage(driver);
-        menuPage.chooseSignIn().fillInLoginDataWithIncorrectPassword(user).chooseSignInButton();
-
-        SignInPage signInPage = new SignInPage(driver);
-        Assert.assertTrue("There is no proper message", signInPage.isLoginFailed());
+            SignInPage signInPage = new SignInPage(driver);
+            Assert.assertTrue("There is no proper message", signInPage.isLoginFailed());
+        } finally {
+            Snapshot snapshot = new Snapshot(driver, "src/main/Screenshots");
+            String name = new Object() {}.getClass().getEnclosingMethod().getName();
+            snapshot.takeSnapshot(name);
+        }
     }
 }
