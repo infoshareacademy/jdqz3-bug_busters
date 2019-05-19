@@ -29,13 +29,13 @@ public class LoginTests {
 
     @Before
     public void startBrowser() {
+
+        this.user = new User(false);
+        Preconditions preconditions = new Preconditions();
+        preconditions.createUser(user);
+
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
-        this.user = new User(false);
-
-        Preconditions preconditions = new Preconditions(driver);
-        preconditions.registration(user);
-        preconditions.logout();
     }
 
     @After
