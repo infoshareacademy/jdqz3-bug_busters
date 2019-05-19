@@ -20,7 +20,7 @@ public class UserBase {
         this.shippingAddress = this.address;
         this.email = CredentialsGenerator.generateEmail();
         this.phone = CredentialsGenerator.generatePhone().toString();
-        this.companyName = CredentialsGenerator.generateComapnyName();
+        this.companyName = CredentialsGenerator.generateCompanyName();
 
     }
 
