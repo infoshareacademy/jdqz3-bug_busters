@@ -1,9 +1,6 @@
 package prerequisites;
 
 import dataModels.User;
-import org.openqa.selenium.WebDriver;
-import pages.BasePage;
-import pages.MenuPage;
 
 import static com.jayway.restassured.RestAssured.given;
 
@@ -25,9 +22,9 @@ public class Preconditions {
                 .formParam("password", user.getPassword())
                 .formParam("checkPassword", user.getPassword())
                 .contentType(FORM_CONTENT_TYPE)
-                .when()
+        .when()
                 .post(url(REGISTER_RESOURCE))
-                .then()
+        .then()
                 .statusCode(302);
     }
 

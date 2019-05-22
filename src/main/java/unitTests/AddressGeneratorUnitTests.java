@@ -1,4 +1,4 @@
-package tests;
+package unitTests;
 
 import generators.AddressGenerator;
 import org.junit.Test;

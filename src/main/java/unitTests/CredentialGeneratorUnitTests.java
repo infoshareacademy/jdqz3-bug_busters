@@ -1,4 +1,4 @@
-package tests;
+package unitTests;
 
 import generators.CredentialsGenerator;
 import org.junit.Test;
@@ -27,13 +27,13 @@ public class CredentialGeneratorUnitTests {
     }
 
     @Test
-    public void isUserNameFisrtLetterCapitalized() {
+    public void isUserNameFirstLetterCapitalized() {
         char firstNameLetter = CredentialsGenerator.generateFirstname().charAt(0);
         assertTrue(isUpperCase(firstNameLetter));
     }
 
     @Test
-    public void isUserLastNameFisrtLetterCapitalized() {
+    public void isUserLastNameFirstLetterCapitalized() {
         char lastNameLetter = CredentialsGenerator.generateLastname().charAt(0);
         assertTrue(isUpperCase(lastNameLetter));
     }
@@ -47,7 +47,7 @@ public class CredentialGeneratorUnitTests {
     }
 
     @Test
-    public void isPhoneNumberLengthEqualto9() {
+    public void isPhoneNumberLengthEqualTo9() {
         Integer length = 9;
         Integer phoneNumber = Integer.toString(CredentialsGenerator.generatePhone()).length();
         assertEquals("Length of the name is not equal to 9", length, phoneNumber);
@@ -56,13 +56,13 @@ public class CredentialGeneratorUnitTests {
     @Test
     public void isCompanyNameLengthEqualTo15() {
         Integer length = 15;
-        Integer companyName = CredentialsGenerator.generateComapnyName().length();
+        Integer companyName = CredentialsGenerator.generateCompanyName().length();
         assertEquals("Length of the name is not equal to 15", length, companyName);
     }
 
     @Test
-    public void isCompanyNameFisrtLetterCapitalized() {
-        char companyNameLetter = CredentialsGenerator.generateComapnyName().charAt(0);
+    public void isCompanyNameFirstLetterCapitalized() {
+        char companyNameLetter = CredentialsGenerator.generateCompanyName().charAt(0);
         assertTrue(isUpperCase(companyNameLetter));
     }
 
